@@ -1,7 +1,7 @@
 module init
   implicit none
   real(8), parameter :: kT = 1d0
-  real(8), parameter :: gamma = 3d0
+  real(8), parameter :: gamma=15d0
 !  real(8), parameter :: h = 1.1d0
   integer, parameter :: num = 3
   real(8), parameter :: k = 1d0
@@ -200,7 +200,7 @@ subroutine molphys
        ek(j) = ek(j)/tsstep
        ep2(j) = ep2(j)/tsstep
        ek2(j) = ek2(j)/tsstep
-       write(100,'(I8,F16.8,F16.8,F16.8)') j, ep(j), ek(j) ep2(j), ek2(j)
+       write(100,'(I8,F16.8,F16.8,F16.8)') j, ep(j), ek(j), ep2(j), ek2(j)
     end do
     ep_ave = sum(ep)/sample
     ep_std = sqrt(sum((ep-ep_ave)**2)/(sample-1)/sample)
