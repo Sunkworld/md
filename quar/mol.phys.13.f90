@@ -137,6 +137,7 @@ subroutine molphys
     eqstep = 3d5/h
     tsstep = 6d6/h
 
+  write(*,*) 'gamma=',gamma
     open(100,file="ei.txt")
   !  qn = q0
   !  pn = p0
