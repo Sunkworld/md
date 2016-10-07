@@ -28,5 +28,5 @@ awk '{sum+=$3} END{print sum}' <cor_energy_5.dat>>cortime
 awk '{sum+=$3} END{print sum}' <cor_energy_10.dat>>cortime
 awk '{sum+=$3} END{print sum}' <cor_energy_15.dat>>cortime
 paste cor_energy_3.dat cor_energy_5.dat cor_energy_10.dat cor_energy_15.dat > tmp
-awk '{print $2,$3,$7,$11,$115}' <tmp >all
+awk '{print $2,$3,$7,$11,$15}' <tmp >all
 
