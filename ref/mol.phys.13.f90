@@ -135,7 +135,7 @@ subroutine molphys
 !    h = 0.1d0 * dt
 
     eqstep = 3d5/h
-    tsstep = 3d6/h
+    tsstep = 6d6/h
 
     open(100,file="ei.txt")
   !  qn = q0

@@ -3,7 +3,7 @@ module constant
 
     real*8,parameter :: dt=0.3d0
     integer,parameter :: sample=20
-    integer,parameter :: tsstep=3d6/dt
+    integer,parameter :: tsstep=6d6/dt
     integer,parameter :: ndt=1.2d2/dt
     integer,parameter :: tt0=tsstep/ndt
 
