@@ -29,7 +29,7 @@ program main
 
        nt0=1
 
-       read(100,*) l, aveep, aveek
+       read(100,*) l, aveep, aveek, aveep2, aveek2
 
        open(99,file=trim(adjustl(aa))//'-e.txt')
        read(99,*) t, ep0(1), ek0(1)
@@ -57,8 +57,8 @@ program main
 
        close(99)
 write(*,*)'file closed'
-       cor_ep(:,i)=cor_ep(:,i)/tt0
-       cor_ek(:,i)=cor_ek(:,i)/tt0
+       cor_ep(:,i)=cor_ep(:,i)/tt0/(aveep2-aveep**2)
+       cor_ek(:,i)=cor_ek(:,i)/tt0/(aveek2-aveek**2)
     enddo
     close(100)
 
