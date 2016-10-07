@@ -200,7 +200,7 @@ subroutine molphys
        ek(j) = ek(j)/tsstep
        ep2(j) = ep2(j)/tsstep
        ek2(j) = ek2(j)/tsstep
-       write(100,'(I8,F16.8,F16.8,F16.8)') j, ep(j), ek(j), ep2(j), ek2(j)
+       write(100,'(I8,F16.8,F16.8,F16.8,F16.8)') j, ep(j), ek(j), ep2(j), ek2(j)
     end do
     ep_ave = sum(ep)/sample
     ep_std = sqrt(sum((ep-ep_ave)**2)/(sample-1)/sample)
