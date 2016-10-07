@@ -1,5 +1,5 @@
 #!/bin/bash
-#gfortran random.f90 mol.phys.13.f90 -o test.x; ./test.x
+gfortran random.f90 mol.phys.13.f90 -o test.x; ./test.x
 gfortran correlation.f90 -o l.x; ./l.x
 sed -i 's/gamma=3/gamma=5/g' mol.phys.13.f90
 mv cor_energy.dat cor_energy_3.dat
