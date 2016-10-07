@@ -1,7 +1,7 @@
 module init
   implicit none
   real(8), parameter :: kT = 1d0
-  real(8), parameter :: gamma=3d0
+  real(8), parameter :: gamma=5d0
 !  real(8), parameter :: h = 1.1d0
   integer, parameter :: num = 3
   real(8), parameter :: k = 1d0
