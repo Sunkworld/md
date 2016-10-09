@@ -1,11 +1,12 @@
 program main
   character(len=30) :: aa
-  integer :: i
+  real :: i
+  open(12,file='222.dat')
+  write(12,*) 'sfdsfa'
+  write(12,*) 'llll'
+  close(12)
+  open(12,file='222.dat')
+  read(12,*) aa
+  write(*,*) aa
 
-  real(8) :: h = 0.3d0
-  write(aa,*) i
-  write(*,*)trim(adjustl(aa))//'-e.txt'
-
-    i = 3d6/h
-write(*,*) i
 end program

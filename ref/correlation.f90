@@ -14,7 +14,7 @@ program main
     implicit none
     integer :: i,j,l
     integer :: nt0=1          !t0 counter
-    real*8 :: ep, ek, aveep, aveek, aveek2,aveep2
+    real*8 :: eptmp, ektmp, aveep, aveek, aveek2,aveep2
     real*8 :: ep0(tt0),ek0(tt0)
     real*8 :: cor_ep(0:ndt-1,sample)=0.0d0, cor_ek(0:ndt-1,sample)=0.0d0
     real*8 :: corep(0:ndt-1), corek(0:ndt-1)
@@ -39,19 +39,19 @@ program main
        cor_ek(0,i)=cor_ek(0,i)+(ek0(1)-aveek)**2
 
        do j=1,tsstep-1
-          read(99,*) t, ep, ek
+          read(99,*) t, eptmp, ektmp
 
           if(mod(j,ndt) .eq. 0) then
              nt0=nt0+1
-             ep0(nt0)=ep
-             ek0(nt0)=ek
-	     cor_ep(0,i)=cor_ep(0,i)+(ep-aveep)**2
-             cor_ek(0,i)=cor_ek(0,i)+(ek-aveek)**2
+             ep0(nt0)=eptmp
+             ek0(nt0)=ektmp
+	     cor_ep(0,i)=cor_ep(0,i)+(eptmp-aveep)**2
+             cor_ek(0,i)=cor_ek(0,i)+(ektmp-aveek)**2
           else
 
              n=mod(j,ndt)
-	     cor_ep(n,i)=cor_ep(n,i)+(ep-aveep)*(ep0(nt0)-aveep)
-             cor_ek(n,i)=cor_ek(n,i)+(ek-aveek)*(ek0(nt0)-aveek)
+	     cor_ep(n,i)=cor_ep(n,i)+(eptmp-aveep)*(ep0(nt0)-aveep)
+             cor_ek(n,i)=cor_ek(n,i)+(ektmp-aveek)*(ek0(nt0)-aveek)
 	  end if
        end do
 
