@@ -11,13 +11,13 @@ module init
   real(8), parameter :: m = 1d0
 !  integer, parameter :: eqstep=1d5/h
 !  integer, parameter :: tsstep=1d7/h
-  integer, parameter :: sample=5
+  integer, parameter :: sample=20
   real(8), parameter :: bound=3d0
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
 !  integer,parameter :: ndt=1.2d2/dt
   integer,parameter :: tt0=5d5
-  integer, parameter :: tottime = 3d6
+  integer, parameter :: tottime = 6d6
   real(8) :: x, dx, dx0
 end module init
 
@@ -58,14 +58,14 @@ subroutine molphys
   real*8 :: t, cortimep, cortimek
   integer :: n, ndt
 
-  do jj=-1,1
+  do jj=-5,5
   a = 0.1d0*jj
   write(bb,'(F8.2)') a
-  open(22,file='a='//trim(adjustl(bb))//'-result.txt')
+  open(22,file='a='//trim(adjustl(bb))//'-result.maindat')
 
   lambda = (2-2*a)/(a+1)
   b = (a+1)/2
-  do ii=3,4
+  do ii=3,6
         h = 0.1d0*ii
     gamma = lambda/h
     ndt = 1.2d2/h
