@@ -11,12 +11,13 @@ module init
   real(8), parameter :: m = 1d0
 !  integer, parameter :: eqstep=1d5/h
 !  integer, parameter :: tsstep=1d7/h
-  integer, parameter :: sample=20
+  integer, parameter :: sample=5
   real(8), parameter :: bound=3d0
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
-  integer,parameter :: ndt=1.2d2/dt
+!  integer,parameter :: ndt=1.2d2/dt
   integer,parameter :: tt0=5d5
+  integer, parameter :: tottime = 3d6
   real(8) :: x, dx, dx0
 end module init
 
@@ -49,29 +50,32 @@ subroutine molphys
   real(8) :: h, gamma,lambda
   integer :: ii,jj,kk
 
+  integer :: nt0=1
   real*8 :: eptmp, ektmp, aveep, aveek, aveek2,aveep2
   real*8 :: ep0(tt0),ek0(tt0)
-  real*8 :: cor_ep(0:ndt-1,sample)=0.0d0, cor_ek(0:ndt-1,sample)=0.0d0
-  real*8 :: corep(0:ndt-1), corek(0:ndt-1)
+  real*8,allocatable :: cor_ep(:,:), cor_ek(:,:)
+  real*8,allocatable :: corep(:), corek(:)
   real*8 :: t, cortimep, cortimek
-  integer :: n
-  do jj=-5,5
-  a = -0.1d0*jj
+  integer :: n, ndt
+
+  do jj=-1,1
+  a = 0.1d0*jj
   write(bb,'(F8.2)') a
   open(22,file='a='//trim(adjustl(bb))//'-result.txt')
 
   lambda = (2-2*a)/(a+1)
   b = (a+1)/2
-  do ii=2,7
-    h = 0.1d0*ii
+  do ii=3,4
+        h = 0.1d0*ii
     gamma = lambda/h
-
-
-
+    ndt = 1.2d2/h
+    allocate(cor_ep(0:ndt-1,sample),cor_ek(0:ndt-1,sample),corep(0:ndt-1),corek(0:ndt-1))
+    cor_ep(:,:)=0d0
+    cor_ek(:,:)=0d0
 !    h = 0.1d0 * dt
-
+    write(*,*) 'a=',a, 'dt=', h
     eqstep = 3d5/h
-    tsstep = 6d6/h
+    tsstep = tottime/h
 
     open(100,file="ei.txt")
   !  qn = q0
@@ -190,12 +194,12 @@ subroutine molphys
     enddo
     close(100)
     write(cc,'(F8.2)') h
-    open(11,file="a="//trim(adjustl(bb))//"_dt="//trim(adjustl(cc))//"cor_energy.dat")
+    open(11,file="a="//trim(adjustl(bb))//"_dt="//trim(adjustl(cc))//"_cor_energy.dat")
 
     do j=0,ndt-1
         corep(j)=sum(cor_ep(j,:))/sample
         corek(j)=sum(cor_ek(j,:))/sample
-  write(11,"(I5,3(2x,F20.12))") j, j*dt, corep(j), corek(j)
+  write(11,"(I5,3(2x,F20.12))") j, j*h, corep(j), corek(j)
     end do
 
     close(11)
@@ -208,6 +212,7 @@ subroutine molphys
 !       dx0=1d0/2.17433d0*exp(-(0.5*x**2-0.1*x**3+0.1*x**4)/kT) ! exact distribution of x
 !       write(12,*) x, dx, dx0
 !    end do
+  deallocate(cor_ep,cor_ek,corep,corek)
   enddo
   close(22)
 enddo
