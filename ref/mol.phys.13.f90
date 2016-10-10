@@ -16,8 +16,8 @@ module init
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
 !  integer,parameter :: ndt=1.2d2/dt
-  integer,parameter :: tt0=5d5
-  integer, parameter :: tottime = 6d7
+  integer,parameter :: tt0=2.5d5
+  integer, parameter :: tottime = 3d7
   real(8) :: x, dx, dx0
 end module init
 
@@ -57,18 +57,18 @@ subroutine molphys
   real*8,allocatable :: corep(:), corek(:)
   real*8 :: t, cortimep, cortimek
   integer :: n, ndt
-  open(22,file='result.maindat')
-  do jj=-4,-4
+  do jj=-6,-6
   a = 0.1d0*jj
   write(bb,'(F8.2)') a
   !open(22,file='a='//trim(adjustl(bb))//'-result.maindat')
 
   lambda = (2-2*a)/(a+1)
   b = (a+1)/2
-  do ii=3,6!6
+  do ii=7,10
+  open(22,file='result.maindat',position='append')
         h = 0.1d0*ii
     gamma = lambda/h
-    ndt = anint(120d0/h)
+    ndt = ceiling(120d0/h)
     write(*,*) h,ndt
     allocate(cor_ep(0:ndt-1,sample),cor_ek(0:ndt-1,sample),corep(0:ndt-1),corek(0:ndt-1))
     cor_ep(:,:)=0d0
@@ -192,8 +192,8 @@ subroutine molphys
 !    111 format(F7.3,2x,A5,2x,F16.8,2x,F16.8,2x,A5,2x,F16.8,2x,F16.8)
     deallocate(cor_ep,cor_ek,corep,corek)
 
+	close(22)
   enddo
 
 enddo
-close(22)
 end subroutine molphys
