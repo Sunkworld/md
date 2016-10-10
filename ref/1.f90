@@ -1,9 +1,9 @@
 program main
   character(len=30) :: aa
   integer :: n =4
-  real,allocatable :: i(:,:)
-  allocate(i(n,n))
-  i(:,:) =1
-  write(*,*) i(2,5)
+  do i=1,7
+    if (i .eq. 1) i=6
+    write(*,*) i
+  enddo
 
 end program
