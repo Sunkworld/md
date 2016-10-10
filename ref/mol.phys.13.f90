@@ -57,14 +57,14 @@ subroutine molphys
   real*8,allocatable :: corep(:), corek(:)
   real*8 :: t, cortimep, cortimek
   integer :: n, ndt
-  do jj=-6,-6
+  do jj=-6,6
   a = 0.1d0*jj
   write(bb,'(F8.2)') a
   !open(22,file='a='//trim(adjustl(bb))//'-result.maindat')
 
   lambda = (2-2*a)/(a+1)
   b = (a+1)/2
-  do ii=7,10
+  do ii=3,10
   open(22,file='result.maindat',position='append')
         h = 0.1d0*ii
     gamma = lambda/h
