@@ -16,8 +16,8 @@ module init
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
 !  integer,parameter :: ndt=1.2d2/dt
-  integer,parameter :: tt0=2.5d5
-  integer, parameter :: tottime = 3d7
+  integer,parameter :: tt0=5d4
+  integer, parameter :: tottime = 6d6
   real(8) :: x, dx, dx0
 end module init
 
@@ -65,6 +65,9 @@ subroutine molphys
   lambda = (2-2*a)/(a+1)
   b = (a+1)/2
   do ii=3,10
+ep(:)=0
+ek(:)=0
+
   open(22,file='result.maindat',position='append')
         h = 0.1d0*ii
     gamma = lambda/h
