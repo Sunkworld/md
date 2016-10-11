@@ -65,11 +65,12 @@ subroutine molphys
   lambda = (2-2*a)/(a+1)
   b = (a+1)/2
   do ii=3,10
-ep(:)=0
-ek(:)=0
-
-  open(22,file='result.maindat',position='append')
-        h = 0.1d0*ii
+    ep(:)=0
+    ek(:)=0
+    ep2(:)=0
+    ek2(:)=0
+    open(22,file='result.maindat',position='append')
+    h = 0.1d0*ii
     gamma = lambda/h
     ndt = ceiling(120d0/h)
     write(*,*) h,ndt
