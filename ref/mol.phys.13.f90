@@ -16,8 +16,8 @@ module init
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
 !  integer,parameter :: ndt=1.2d2/dt
-  integer,parameter :: tt0=5d4
-  integer, parameter :: tottime = 6d6
+  integer,parameter :: tt0=2.5d5
+  integer, parameter :: tottime = 3d7
   real(8) :: x, dx, dx0
 end module init
 
