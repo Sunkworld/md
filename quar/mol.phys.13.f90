@@ -16,14 +16,14 @@ module init
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
 !  integer,parameter :: ndt=1.2d2/dt
-  integer,parameter :: tt0=5d3
-  integer, parameter :: tottime = 6d5
+  integer,parameter :: tt0=5d4
+  integer, parameter :: tottime = 6d6
   real(8) :: x, dx, dx0
 end module init
 
 program main
 
-
+! test3
 
   call molphys
 !  call BAOAB
@@ -33,7 +33,7 @@ subroutine calForce(fn, x)
   use init, only: k
   implicit none
   real(8) :: fn, x
-  fn = -k*x**3
+  fn = -k*x
 end subroutine calForce
 
 subroutine molphys
@@ -47,7 +47,7 @@ subroutine molphys
   real(8) :: ep(sample)=0d0, ek(sample)=0d0, ep2(sample)=0d0, ek2(sample)=0d0
   real(8) :: ep_std=0d0, ek_std=0d0, ep_ave=0d0, ek_ave=0d0
   character(len=30) :: aa, bb, cc, dd
-  real(8) :: h, gamma,lambda
+  real(8) :: h, gamma,lambda,gamma2
   integer :: ii,jj,kk
 
   integer :: nt0=1
@@ -57,20 +57,24 @@ subroutine molphys
   real*8,allocatable :: corep(:), corek(:)
   real*8 :: t, cortimep, cortimek
   integer :: n, ndt
-  do jj=-6,6
-  a = 0.1d0*jj
+  do jj=6,6
+!  a = 0.1d0*jj
   write(bb,'(F8.2)') a
   !open(22,file='a='//trim(adjustl(bb))//'-result.maindat')
 
-  lambda = (2-2*a)/(a+1)
-  b = (a+1)/2
-  do ii=3,10
+!  lambda = (2-2*a)/(a+1)
+!  b = (a+1)/2
+  do ii=3,6
     ep(:)=0
     ek(:)=0
     ep2(:)=0
     ek2(:)=0
     open(22,file='result.maindat',position='append')
-    h = 0.1d0*ii
+    h = 0.5d0
+    gamma2 = ii*3d0
+    a = -exp(-gamma2*h)
+    lambda = (2-2*a)/(a+1)
+    b = (a+1)/2
     gamma = lambda/h
     ndt = ceiling(120d0/h)
     write(*,*) h,ndt
@@ -131,7 +135,7 @@ subroutine molphys
       !       write(*,*) real(i)/real(tsstep)*100, '%'
       !       write(*,*) qn, pn
       !    end if
-          eptmp = 0.25*k*qn**4
+          eptmp = 0.5*k*qn**2
           ektmp = 0.5*pn**2/m
           if(mod(i-1,ndt) .eq. 0) then
             nt0=nt0+1
@@ -190,7 +194,7 @@ subroutine molphys
     ep_std = sqrt(sum((ep-ep_ave)**2)/(sample-1)/sample)
     ek_ave = sum(ek)/sample
     ek_std = sqrt(sum((ek-ek_ave)**2)/(sample-1)/sample)
-    write(22,'(F8.2,F8.2,F8.2,F16.8,F16.8)') a,h,gamma, ep_ave, cortimep
+    write(22,'(F8.2,F8.2,F16.8,F16.8)') h,gamma2, ep_ave, cortimep
 
 !    write(22,111) h,'ep=',ep_ave,ep_std,'ek=',ek_ave,ek_std
 !    111 format(F7.3,2x,A5,2x,F16.8,2x,F16.8,2x,A5,2x,F16.8,2x,F16.8)
