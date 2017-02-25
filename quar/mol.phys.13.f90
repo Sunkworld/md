@@ -64,15 +64,15 @@ subroutine molphys
 
 !  lambda = (2-2*a)/(a+1)
 !  b = (a+1)/2
-  do ii=3,6
+  do ii=1,5
     ep(:)=0
     ek(:)=0
     ep2(:)=0
     ek2(:)=0
     open(22,file='result.maindat',position='append')
-    h = 0.5d0
-    gamma2 = ii*3d0
-    a = -exp(-gamma2*h)
+    h = 0.05d0
+    gamma2 = 200d0*ii
+    a = exp(-gamma2*h)
     lambda = (2-2*a)/(a+1)
     b = (a+1)/2
     gamma = lambda/h
@@ -109,26 +109,30 @@ subroutine molphys
        call calForce(fn, qn)
     !   write(*,*) 'sample=', j
        do i=1, eqstep
-          call random_normal(rand)
-          qnp1 = qn + b*h*pn/m + b*h**2/2/m*fn + b*h/2/m*rand*sqrt(2*gamma*kT*h)
-          call calForce(fnp1, qnp1)
-          pnp1 = a*pn/m + h/2/m*(a*fn+fnp1) + b/m*rand*sqrt(2*gamma*kT*h)
-          qn = qnp1
-          pn = pnp1
-          fn = fnp1
+         pn = pn + 0.5*h*fn
+         qn = qn + 0.5*h*pn/m
+         call random_normal(rand)
+         pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand
+         qnp1 = qn + 0.5*h*pn/m
+         call calForce(fn, qnp1)
+         pnp1 = pn + 0.5*h*fn
+         pn = pnp1
+         qn = qnp1
           !     write(233, *) qn
           !     write(666, *) pn
 
        end do
 
        do i=1, tsstep
-          call random_normal(rand)
-          qnp1 = qn + b*h*pn/m + b*h**2/2/m*fn + b*h/2/m*rand*sqrt(2*gamma*kT*h)
-          call calForce(fnp1, qnp1)
-          pnp1 = a*pn/m + h/2/m*(a*fn+fnp1) + b/m*rand*sqrt(2*gamma*kT*h)
-          qn = qnp1
-          pn = pnp1
-          fn = fnp1
+         pn = pn + 0.5*h*fn
+         qn = qn + 0.5*h*pn/m
+         call random_normal(rand)
+         pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand
+         qnp1 = qn + 0.5*h*pn/m
+         call calForce(fn, qnp1)
+         pnp1 = pn + 0.5*h*fn
+         pn = pnp1
+         qn = qnp1
           !     write(233, *) qn
           !     write(666, *) pn
       !    if (mod(i, tsstep/10+1) .eq. 0) then
