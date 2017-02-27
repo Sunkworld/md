@@ -18,7 +18,7 @@ module init
 !  integer,parameter :: ndt=1.2d2/dt
   integer,parameter :: tt0=5d4
   integer, parameter :: tottime = 6d6
-  real(8) :: x, dx, dx0
+  real(8) :: x, dx
 end module init
 
 program main
@@ -64,14 +64,14 @@ subroutine molphys
 
 !  lambda = (2-2*a)/(a+1)
 !  b = (a+1)/2
-  do ii=1,5
+  do ii=1,1
     ep(:)=0
     ek(:)=0
     ep2(:)=0
     ek2(:)=0
     open(22,file='result.maindat',position='append')
-    h = 0.05d0
-    gamma2 = 200d0*ii
+    h = 0.02d0
+    gamma2 = 10000d0*ii
     a = exp(-gamma2*h)
     lambda = (2-2*a)/(a+1)
     b = (a+1)/2
