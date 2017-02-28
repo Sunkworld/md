@@ -1,0 +1,5 @@
+cat mol.phys.13.f90 | grep '0.05d0';sed -i 's/0.05d0/0.1d0/g' mol.phys.13.f90; gfortran random.f90 mol.phys.13.f90 -o test.x;./test.x
+
+mv ct.txt '../phy/ct/ct_0.1_'(pwd | awk -F '/' '{print $NF}')'.txt'
+echo (tail -1 result.maindat) >> ../phy/0.1
+

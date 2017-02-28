@@ -2,7 +2,7 @@ module init
   implicit none
   real(8), parameter :: kT = 1d0
 !  real(8), parameter :: gamma=0.5d0
-  real(8), parameter :: h = 0.02d0                                                       !needs to be modified
+  real(8), parameter :: h = 0.1d0                                                       !needs to be modified
   integer, parameter :: num = 3
   real(8), parameter :: k = 1d0
 !  integer, parameter :: Nstep = 1d7 !Nonsense
@@ -15,7 +15,7 @@ module init
   real(8), parameter :: bound=3d0
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
-  integer,parameter :: ndt=420                                                           !needs to be modified
+  integer,parameter :: ndt=120!needs to be modified
   integer, parameter :: tottime = 1d7
   integer,parameter :: tt0=tottime/ndt/h
   real(8) :: x, dx
@@ -71,7 +71,7 @@ subroutine molphys
     ek2(:)=0
     open(22,file='result.maindat',position='append')
 !    h = 0.02d0
-    gamma2 = 0.8d0                                                                      !needs to be modified
+    gamma2 = 0.6d0                                                                      !needs to be modified
     a = exp(-gamma2*h)
     lambda = (2-2*a)/(a+1)
     b = (a+1)/2

@@ -1,0 +1,8 @@
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.05    0.40      0.49987705      0.00010723     29.39293094      0.06732160      0.49957515      0.00008845     25.51587595      0.05734447
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.05    0.40      0.49993804      0.00008124     29.29373823      0.15693937      0.49961736      0.00008173     25.48712542      0.14101259
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.10    0.40      0.49994812      0.00008451     14.79754007      0.19590438      0.49870160      0.00007339     13.25637834      0.21535751
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.10    0.40      0.49999783      0.00007374     14.89843661      0.05345289      0.49872237      0.00007885     12.99831339      0.03621668

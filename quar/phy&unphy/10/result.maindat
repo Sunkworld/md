@@ -1,0 +1,14 @@
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.02   10.00      0.49982495      0.00023115    247.91664810      0.45159243      0.49995700      0.00001657      2.62501943      0.30395753
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.02   10.00      0.50009723      0.00016922    251.23197176      0.90211484      0.49994330      0.00001609      3.10290070      0.52131799
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.02   10.00      0.49979784      0.00016191    251.28959196      0.85811503      0.49992361      0.00001475      3.24894246      0.55382883
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.05   10.00      0.49993801      0.00009949     99.62971892      0.83033143      0.49968518      0.00001558      0.63274491      0.64033803
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.05   10.00      0.49977187      0.00017045    100.33904536      0.31040124      0.49966337      0.00001256      1.54457426      0.22222593
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.10   10.00      0.49987292      0.00012042     46.89801725      0.41177374      0.49877742      0.00001467      1.96944399      0.27321961
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.10   10.00      0.50004664      0.00012250     47.27015779      0.22479307      0.49873524      0.00002577      1.33782313      0.09434757

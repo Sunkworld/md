@@ -2,7 +2,7 @@ module init
   implicit none
   real(8), parameter :: kT = 1d0
 !  real(8), parameter :: gamma=0.5d0
-  real(8), parameter :: h = 0.02d0                                                       !needs to be modified
+  real(8), parameter :: h = 0.1d0                                                       !needs to be modified
   integer, parameter :: num = 3
   real(8), parameter :: k = 1d0
 !  integer, parameter :: Nstep = 1d7 !Nonsense
@@ -15,7 +15,7 @@ module init
   real(8), parameter :: bound=3d0
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
-  integer,parameter :: ndt=420                                                           !needs to be modified
+  integer,parameter :: ndt=80!needs to be modified
   integer, parameter :: tottime = 1d7
   integer,parameter :: tt0=tottime/ndt/h
   real(8) :: x, dx
