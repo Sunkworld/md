@@ -2,7 +2,7 @@ module init
   implicit none
   real(8), parameter :: kT = 1d0
 !  real(8), parameter :: gamma=0.5d0
-  real(8), parameter :: h = 0.1d0                                                       !needs to be modified
+  real(8), parameter :: h = 0.02d0                                                       !needs to be modified
   integer, parameter :: num = 3
   real(8), parameter :: k = 1d0
 !  integer, parameter :: Nstep = 1d7 !Nonsense
@@ -15,7 +15,7 @@ module init
   real(8), parameter :: bound=3d0
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
-  integer,parameter :: ndt=60!needs to be modified
+  integer,parameter :: ndt=100000!needs to be modified
   integer, parameter :: tottime = 1d7
   integer,parameter :: tt0=tottime/ndt/h
   real(8) :: x, dx
@@ -33,7 +33,7 @@ subroutine calForce(fn, x)
   use init, only: k
   implicit none
   real(8) :: fn, x
-  fn = -k*x                                                                              !needs to be modified
+  fn = -k*x**3                                                                             !needs to be modified
 end subroutine calForce
 
 subroutine molphys
@@ -81,7 +81,7 @@ subroutine molphys
     allocate(cor_ep(0:ndt-1,sample),cor_ek(0:ndt-1,sample),corep(sample),corek(sample))
     cor_ep(:,:)=0d0
     cor_ek(:,:)=0d0
-!    h = 0.1d0 * dt
+!    h = 0.05d0 * dt
     write(*,*) 'gamma=',gamma2, 'dt=', h
     eqstep = 1d5/h
     tsstep = tottime/h
@@ -139,7 +139,7 @@ subroutine molphys
       !       write(*,*) real(i)/real(tsstep)*100, '%'
       !       write(*,*) qn, pn
       !    end if
-         eptmp = 0.5*k*qn**2                                                               !needs to be modified
+         eptmp = 0.25*k*qn**4                                                               !needs to be modified
           ektmp = 0.5*pn**2/m
           if(mod(i-1,ndt) .eq. 0) then
             nt0=nt0+1

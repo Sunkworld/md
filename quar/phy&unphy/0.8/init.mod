@@ -1,5 +1,5 @@
 GFORTRAN module version '10' created from mol.phys.13.f90
-MD5:b1a85e12fc68dfede1334da831fecfa5 -- If you edit this, you'll get what you deserve.
+MD5:c22bffda164ef2f5616fd0f24d4e67e3 -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () () ()
 () () ())
@@ -44,7 +44,7 @@ IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
 INTEGER 4 0 0 0 INTEGER ()) 0 '60') () 0 () () () 0 0)
 12 'ndt' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
-INTEGER 4 0 0 0 INTEGER ()) 0 '80') () 0 () () () 0 0)
+INTEGER 4 0 0 0 INTEGER ()) 0 '13000') () 0 () () () 0 0)
 13 'num' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
 INTEGER 4 0 0 0 INTEGER ()) 0 '3') () 0 () () () 0 0)
@@ -56,7 +56,7 @@ IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
 INTEGER 4 0 0 0 INTEGER ()) 0 '10000000') () 0 () () () 0 0)
 16 'tt0' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
-INTEGER 4 0 0 0 INTEGER ()) 0 '1250000') () 0 () () () 0 0)
+INTEGER 4 0 0 0 INTEGER ()) 0 '7690') () 0 () () () 0 0)
 17 'width' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0
 REAL ()) 0 '0.1999999999999a@0') () 0 () () () 0 0)

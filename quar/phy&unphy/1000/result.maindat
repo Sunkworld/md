@@ -10,3 +10,15 @@
     0.10 1000.00      0.49991786      0.00027581     99.16763579      3.66998942      0.49876796      0.00001655     -1.10493322      1.90562135
       dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
     0.10 1000.00      0.50001715      0.00021433    100.86905340      0.44301445      0.49871242      0.00001347      1.44083446      0.29289215
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.10 1000.00      0.50002209      0.00015424    101.13532519      0.48884906      0.49874287      0.00002043      1.29311355      0.37432165
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.05 1000.00      0.50002068      0.00024001    408.66614190      6.23007440      0.49968780      0.00001177      1.40659972      3.65999437
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.05 1000.00      0.49983845      0.00028455    397.29744636      2.43287162      0.49969738      0.00000706      3.24084164      1.65297921
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.02 1000.00      0.50004635      0.00047448   2599.99413862     76.20275017      0.49996266      0.00000782     77.65153014     69.05075196
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.02 1000.00      0.49968594      0.00050511   2544.31075738     47.49459028      0.49994832      0.00000732     41.18221248     29.73949590
+      dt   gamma          ep_ave          ep_std        cortimep    cortimep_std          ek_ave          ek_std        cortimek    cortimek_std
+    0.02 1000.00      0.50021798      0.00046345   2489.25989884     26.87835413      0.49994923      0.00000669     -3.82975692     21.94128583

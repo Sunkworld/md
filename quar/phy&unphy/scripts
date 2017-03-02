@@ -1,5 +1,19 @@
-cat mol.phys.13.f90 | grep '0.05d0';sed -i 's/0.05d0/0.1d0/g' mol.phys.13.f90; gfortran random.f90 mol.phys.13.f90 -o test.x;./test.x
+gfortran random.f90 mol.phys.13.f90 -o test.x;./test.x
 
-mv ct.txt '../phy/ct/ct_0.1_'(pwd | awk -F '/' '{print $NF}')'.txt'
-echo (tail -1 result.maindat) >> ../phy/0.1
+mv ct.txt '../unphy/ct/ct_0.02_'(pwd | awk -F '/' '{print $NF}')'.txt'
+echo (tail -1 result.maindat) >> ../unphy/0.02
+
+for a in (find ./ | grep mol)
+                                          sed -i 's/pn\ =\ -a\*pn/pn\ =\ a\*pn/g' $a
+                                      end
+
+for a in (find ./ | grep mol)
+                                          sed -i 's/\:\ h\ =\ 0.05d0/\:\ h\ =\ 0.02d0/g' $a
+                                      end
+
+for a in (find ./ | grep mol)
+sed -i 's/fn\ =\ -k\*x\ /fn\ =\ -k\*x\*\*3/g' $a
+sed -i 's/eptmp\ =\ 0.5\*k\*qn\*\*2/eptmp\ =\ 0.25\*k\*qn\*\*4/g' $a
+end
+
 

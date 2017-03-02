@@ -1,5 +1,5 @@
 GFORTRAN module version '10' created from mol.phys.13.f90
-MD5:ddb6030081cb8d9730c56f7741416008 -- If you edit this, you'll get what you deserve.
+MD5:7c9620e14e7bac9b832e1e6cb9353e07 -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () () ()
 () () ())
@@ -27,7 +27,7 @@ REAL ()) 0 '0.30000000000000@1') () 0 () () () 0 0)
 IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
 6 'h' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0
-REAL ()) 0 '0.1999999999999a@0') () 0 () () () 0 0)
+REAL ()) 0 '0.ccccccccccccd0@-1') () 0 () () () 0 0)
 7 'init' 'init' '' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0 0)
 8 'k' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
@@ -44,7 +44,7 @@ IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
 INTEGER 4 0 0 0 INTEGER ()) 0 '60') () 0 () () () 0 0)
 12 'ndt' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
-INTEGER 4 0 0 0 INTEGER ()) 0 '120') () 0 () () () 0 0)
+INTEGER 4 0 0 0 INTEGER ()) 0 '40000') () 0 () () () 0 0)
 13 'num' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
 INTEGER 4 0 0 0 INTEGER ()) 0 '3') () 0 () () () 0 0)
@@ -56,7 +56,7 @@ IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
 INTEGER 4 0 0 0 INTEGER ()) 0 '10000000') () 0 () () () 0 0)
 16 'tt0' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (CONSTANT (
-INTEGER 4 0 0 0 INTEGER ()) 0 '833330') () 0 () () () 0 0)
+INTEGER 4 0 0 0 INTEGER ()) 0 '5000') () 0 () () () 0 0)
 17 'width' 'init' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
 IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () (CONSTANT (REAL 8 0 0 0
 REAL ()) 0 '0.1999999999999a@0') () 0 () () () 0 0)
