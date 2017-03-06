@@ -5,10 +5,11 @@ do
   cd $i
   for j in 0.02 0.05 0.1
   do
-    cd $ j
-    cp ../../autocorr.f90 .
+    cd $j
+    cp ../../autocorr.f90 ../../fftw3.f .
     gfortran autocorr.f90 -o autocorr.x -lfftw3
     ./autocorr.x
+    echo "gamma="$i", dt="$j" Completed"
     cd ..
   done
   cd ..

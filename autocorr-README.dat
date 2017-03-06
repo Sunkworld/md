@@ -1,0 +1,1 @@
+ifort autocorr.f90 -o autocorr.x -lfftw3
