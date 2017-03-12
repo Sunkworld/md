@@ -1,13 +1,5 @@
 #!/bin/bash
-<<233
-for i in `ls`
-do
-  if [ -d $i ]
-  then
-    rm -rf $i
-  fi
-done
-233
+
 gammalist='0.01 0.1 0.2 0.4 0.6 0.8 1.0 1.2 1.4 1.6 1.8 2.0 4.0 10 40 100 1000 10000'
 for i in $gammalist
 do
