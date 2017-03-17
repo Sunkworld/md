@@ -1,7 +1,6 @@
 module init
   implicit none
   real(8), parameter :: kT = 1d0
-  real(8), parameter :: gamma = 0.8d0                                                   !needs to be modified
   real(8), parameter :: h = 0.1d0                                                       !needs to be modified
   integer, parameter :: num = 3
   real(8), parameter :: k = 1d0
@@ -18,7 +17,7 @@ subroutine calForce(fn, x)
   use init, only: k
   implicit none
   real(8) :: fn, x
-  fn = -k*x                                                                              !needs to be modified
+  fn = -x+0.3*x**2-0.4*x**3                                                                              !needs to be modified
 end subroutine calForce
 
 subroutine molphys
@@ -32,6 +31,7 @@ subroutine molphys
   real*8 :: t, cortimep, cortimek,cortimep_std,cortimek_std
   integer :: n!, ndt
   character(30) :: c
+  real(8) :: gamma = 0.8d0                                                   !needs to be modified
   open(22,file='result.maindat')
   ep(:)=0
   ek(:)=0
@@ -51,7 +51,7 @@ subroutine molphys
           pn = pn + 0.5*h*fn
           qn = qn + 0.5*h*pn/m
           call random_normal(rand)
-          pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                !needs to be modified
+          pn = -a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                !needs to be modified
           qnp1 = qn + 0.5*h*pn/m
           call calForce(fn, qnp1)
           pnp1 = pn + 0.5*h*fn
@@ -66,7 +66,7 @@ subroutine molphys
          pn = pn + 0.5*h*fn
          qn = qn + 0.5*h*pn/m
          call random_normal(rand)
-         pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                 !needs to be modified
+         pn = -a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                 !needs to be modified
          qnp1 = qn + 0.5*h*pn/m
          call calForce(fn, qnp1)
          pnp1 = pn + 0.5*h*fn
@@ -76,7 +76,7 @@ subroutine molphys
              write(*,*) real(i)/real(tsstep)*100, '%'
              write(*,*) qn, pn
          end if
-         eptmp = 0.5*k*qn**2                                                               !needs to be modified
+         eptmp = 0.5*qn**2-0.1*qn**3+0.1*qn**4                                                               !needs to be modified
          ektmp = 0.5*pn**2/m
          ep(j) = ep(j)+eptmp/tsstep
          ek(j) = ek(j) + ektmp/tsstep
