@@ -2,7 +2,7 @@ module init
   implicit none
   real(8), parameter :: kT = 1d0
 !  real(8), parameter :: gamma=0.5d0
-  real(8), parameter :: h = 0.02d0                                                       !needs to be modified
+  real(8), parameter :: h = 0.05d0                                                       !needs to be modified
   integer, parameter :: num = 3
   real(8), parameter :: k = 1d0
 !  integer, parameter :: Nstep = 1d7 !Nonsense
@@ -15,9 +15,9 @@ module init
   real(8), parameter :: bound=3d0
   real(8), parameter :: width = 0.1d0
   integer, parameter :: nbin=2*bound/width
-  integer,parameter :: ndt=1500000!needs to be modified
-  integer, parameter :: tottime = 2d7
-  integer,parameter :: tt0=tottime/ndt/h
+  integer,parameter :: ndt=200000!needs to be modified
+  integer, parameter :: tottime = 1d7
+  integer,parameter :: tt0=floor(tottime/ndt/h)
   real(8) :: x, dx
 end module init
 
@@ -33,7 +33,7 @@ subroutine calForce(fn, x)
   use init, only: k
   implicit none
   real(8) :: fn, x
-  fn = -k*x
+  fn =  -x
 end subroutine calForce
 
 subroutine molphys
@@ -73,8 +73,8 @@ subroutine molphys
     ek2(:)=0
     open(22,file='result.maindat',position='append')
 !    h = 0.02d0
-    gamma2 = 1.4d0                                                                      !needs to be modified
-    a = exp(-gamma2*h)
+    gamma2 = 0.4d0                                                                      !needs to be modified
+    a = -exp(-gamma2*h)
     lambda = (2-2*a)/(a+1)
     b = (a+1)/2
     gamma = lambda/h
@@ -112,41 +112,44 @@ subroutine molphys
        call calForce(fn, qn)
     !   write(*,*) 'sample=', j
        do i=1, eqstep
-         pn = pn + 0.5*h*fn
-         qn = qn + 0.5*h*pn/m
-         call random_normal(rand)
-         pn = -a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                !needs to be modified
-         qnp1 = qn + 0.5*h*pn/m
-         call calForce(fn, qnp1)
-         pnp1 = pn + 0.5*h*fn
-         pn = pnp1
-         qn = qnp1
+          pn = pn + 0.5*h*fn
+
+          qn = qn + h*pn/m
+                                              
+          call calForce(fn, qn)
+
+          pn = pn + 0.5*h*fn
+
+          call random_normal(rand)
+          pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand 
           !     write(233, *) qn
           !     write(666, *) pn
 
        end do
 
        do i=1, tsstep
-         pn = pn + 0.5*h*fn
-         qn = qn + 0.5*h*pn/m
-         call random_normal(rand)
-         pn = -a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                 !needs to be modified
-         qnp1 = qn + 0.5*h*pn/m
-         call calForce(fn, qnp1)
-         pnp1 = pn + 0.5*h*fn
-         pn = pnp1
-         qn = qnp1
+          pn = pn + 0.5*h*fn
+
+          qn = qn + h*pn/m
+                                              
+          call calForce(fn, qn)
+
+          pn = pn + 0.5*h*fn
+
+          call random_normal(rand)
+          pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand 
           !     write(233, *) qn
           !     write(666, *) pn
       !    if (mod(i, tsstep/10+1) .eq. 0) then
       !       write(*,*) real(i)/real(tsstep)*100, '%'
       !       write(*,*) qn, pn
       !    end if
-         eptmp = 0.5*k*qn**2                                                               !needs to be modified
+         eptmp = 0.5*qn**2                                                           !needs to be modified
           ektmp = 0.5*pn**2/m
           ettmp = eptmp + ektmp
           if(mod(i-1,ndt) .eq. 0) then
             nt0=nt0+1
+            if (nt0 .gt. tt0) exit
       !      write(*,*) i-1
             ep0(nt0)=eptmp
             ek0(nt0)=ektmp
