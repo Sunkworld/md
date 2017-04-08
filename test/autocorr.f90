@@ -1,7 +1,7 @@
 program main
    implicit none
    integer :: i, j
-   integer,parameter :: n = 2000000
+   integer,parameter :: n = 20000000
    integer,parameter :: nsample = 20
    integer,parameter :: ncor = n/4
    real(8),dimension(n) :: Ek, Ep, Et

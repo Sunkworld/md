@@ -86,7 +86,7 @@ subroutine molphys
     cor_ek(:,:)=0d0
 !    h = 0.05d0 * dt
     write(*,*) 'gamma=',gamma2, 'dt=', h
-    eqstep = 1d5/h
+    eqstep = 2.5d7/h
     tsstep = tottime/h
   !  tt0 = tsstep/ndt
   !  open(100,file="ei.txt")
@@ -112,33 +112,25 @@ subroutine molphys
        call calForce(fn, qn)
     !   write(*,*) 'sample=', j
        do i=1, eqstep
-          pn = pn + 0.5*h*fn
-
-          qn = qn + h*pn/m
-                                              
+	   call random_normal(rand)
+          pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                !needs to be modified
+        qn = qn + 0.5*h*pn/m
           call calForce(fn, qn)
-
-          pn = pn + 0.5*h*fn
-
-          call random_normal(rand)
-          pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand 
-          !     write(233, *) qn
+          pn = pn + h*fn
+          qn = qn + 0.5*h*pn/m
+         !     write(233, *) qn
           !     write(666, *) pn
 
        end do
 
        do i=1, tsstep
-          pn = pn + 0.5*h*fn
-
-          qn = qn + h*pn/m
-                                              
+	   call random_normal(rand)
+          pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand                                                !needs to be modified
+        qn = qn + 0.5*h*pn/m
           call calForce(fn, qn)
-
-          pn = pn + 0.5*h*fn
-
-          call random_normal(rand)
-          pn = a*pn + sqrt((1-a*a)*kT)*sqrt(m)*rand 
-          !     write(233, *) qn
+          pn = pn + h*fn
+          qn = qn + 0.5*h*pn/m
+      !     write(233, *) qn
           !     write(666, *) pn
       !    if (mod(i, tsstep/10+1) .eq. 0) then
       !       write(*,*) real(i)/real(tsstep)*100, '%'
