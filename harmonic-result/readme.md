@@ -3,7 +3,7 @@ The harmonic result is mainly obtained by *typical* method, with parameters:
 ```fortran
 eqstep = 2.5e7
 tsstep = 1e7
-```fortran
+```
 the last 2e6 steps for calculation of correlation time.
 
 Some of the results, specifically
