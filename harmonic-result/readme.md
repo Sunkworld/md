@@ -12,3 +12,4 @@ dt = 0.05
 gamma = 0.4-2.0
 ```
 are obtained with *block* method, due to its long correlation time.
+
