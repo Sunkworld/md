@@ -24,7 +24,7 @@ do
 done
 wait
 mkdir stats
-for method in $metholist
+for method in $methodlist
 do
   cp $method/result.maindat stats/$method.dat
 done
