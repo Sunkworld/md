@@ -38,7 +38,7 @@ subroutine molphys
   ek(:)=0
   ekk=0
   epp=0
-    a = exp(-gamma*h)
+    a = exp(-gamma*h*0.5d0)
     write(*,*) 'gamma=',gamma, 'dt=', h
     do j=1, sample
        write(c,'(I2)') j
