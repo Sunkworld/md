@@ -30,8 +30,8 @@ subroutine molphys
   integer :: n!, ndt
   character(30) :: c
   real*8,parameter :: d2=h/2d0
-!  real(8) :: gamma = 1d0/h*log((2d0+h)/(2d0-h))
-  real(8) :: gamma =1d0/h*log((1d0+5d0*d2**2-3d0*d2**4+d2*2*sqrt(4d0+d2**2-3d0*d2**4))/(1d0-3d0*d2**2+3d0*d2**4))
+!  real(8) :: gamma = 2d0
+  real(8) :: gamma = 2d0
   real*8 :: epp, ekk, ett
   open(22,file='result.maindat')
   ep(:)=0
@@ -44,8 +44,8 @@ subroutine molphys
        write(c,'(I2)') j
        write(*,*) 'Sample=', j
 !       open(33,file=trim('traj_'//adjustl(c)))
-       if ((j==1) .and. (h==0.1d0)) then
-           open(33,file='miao')
+       if ((j==1) .and. (h==0.1d0 .or. h==0.2d0)) then
+           open(33,file=trim('miao_'//adjustl(c)))
        endif
        call random_normal(rand)
        pn = rand
@@ -74,7 +74,7 @@ subroutine molphys
          ettmp = eptmp + ektmp
 !         ep(j) = ep(j)+eptmp/eqstep
 !         ek(j) = ek(j) + ektmp/eqstep
-         if ((j==1) .and. (h==0.1d0)) then
+         if ((j==1) .and. (h==0.1d0 .or. h==0.2d0)) then
            epp = eptmp/i+epp*(i-1)/i
            ekk = ektmp/i+ekk*(i-1)/i
            ett = ettmp/i+ett*(i-1)/i
@@ -108,13 +108,13 @@ subroutine molphys
            epp = eptmp/i+epp*(i-1)/i
            ekk = ektmp/i+ekk*(i-1)/i
            ett = ettmp/i+ett*(i-1)/i
-       if ((j==1) .and. (h==0.1d0)) then
+       if ((j==1) .and. (h==0.1d0 .or. h==0.2d0)) then
            if (mod(i,200) .eq. 1) then
                      write(33,'(F24.8,F16.8,F16.8,F16.8)') i*h,epp,ekk,ett
            endif
        endif
         enddo
-       if ((j==1) .and. (h==0.1d0)) then
+       if ((j==1) .and. (h==0.1d0 .or. h==0.2d0)) then
       close(33)
     endif
    enddo
