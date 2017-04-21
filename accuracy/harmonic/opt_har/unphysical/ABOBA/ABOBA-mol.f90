@@ -30,14 +30,11 @@ subroutine molphys
   integer :: n!, ndt
   character(30) :: c
   real*8 :: epp, ekk,ett
-  real(8),parameter ::ctmp=65536d0*h*h-65536d0*h**4+37888d0*h**6-13056d0*h**8+2944d0*h**10-416d0*h**12+32d0*h**14-h**16
+  real(8),parameter ::ctmp=16384d0*h*h-16384d0*h**4+8448d0*h**6-2496d0*h**8+400d0*h**10-32d0*h**12+h**14
   real(8) :: gamma
-  if (h .lt. 1.1) then
-  gamma=1d0/h*log((-1024d0-512d0*h**2+320d0*h**4-128d0*h**6+20d0*h**8-h**10-8d0*sqrt(ctmp))/(-1024d0+1536d0*h*h-704*h**4+160d0*h**6-20d0*h**8+h**10))
-  else
-  gamma=3.95011869939490d0
-  endif
-!  real(8) :: gamma = 1d0/h*log((2d0+h)/(2d0-h))
+
+  gamma=1d0/h*log((256d0+128d0*h**2-80d0*h**4+16d0*h**6-h**8+4d0*sqrt(ctmp))/(256d0-384d0*h*h+176*h**4-24d0*h**6+h**8))
+
   open(22,file='result.maindat')
   ep(:)=0
   ek(:)=0

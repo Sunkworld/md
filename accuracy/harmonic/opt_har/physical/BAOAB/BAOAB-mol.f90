@@ -31,7 +31,7 @@ subroutine molphys
   character(30) :: c
   real*8,parameter :: d2=h/2d0
 !  real(8) :: gamma = 1d0/h*log((2d0+h)/(2d0-h))
-  real(8) :: gamma=1d0/h*log((1d0+5d0*d2**2-3d0*d2**4+d2*2*sqrt(4d0+d2**2-3d0*d2**4))/(1d0-3d0*d2**2+3d0*d2**4))
+  real(8) :: gamma=1d0/h*log((1d0+5d0*d2**2-5d0*d2**4+d2**6+d2*2*(2-d2**2)*sqrt(1d0-d2**2+d2**4))/(1d0-d2**2)**3)
   real*8 :: epp, ekk, ett
   open(22,file='result.maindat')
   ep(:)=0
