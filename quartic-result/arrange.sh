@@ -27,12 +27,23 @@ do
       cat 0.1_pot.csv | awk '{print $3,$4}' > tmp2_pot.csv
       cat 0.3_pot.csv | awk '{print $3,$4,","}' > tmp3_pot.csv
       paste -d ','  tmp1_pot.csv tmp2_pot.csv tmp3_pot.csv > ${method}-${j}-pot.csv
-      sed -i '' '1i\
-      log(g),0.05,0.05-error,0.1,0.1-error,0.3,0.3-error,
-      ' ${method}-${j}-ham.csv
-      sed -i '' '1i\
-      log(g),0.05,0.05-error,0.1,0.1-error,0.3,0.3-error,
-      ' ${method}-${j}-pot.csv
+      if [ "$j" = "physical" ]
+      then
+        sed -i '' '1i\
+        log(g),phys-num-0.05,0.05-error,phys-num-0.1,0.1-error,phys-num-0.3,0.3-error,
+        ' ${method}-${j}-ham.csv
+        sed -i '' '1i\
+        log(g),phys-num-0.05,0.05-error,phys-num-0.1,0.1-error,phys-num-0.3,0.3-error,
+        ' ${method}-${j}-pot.csv
+      else
+        sed -i '' '1i\
+        log(g),unphys-num-0.05,0.05-error,unphys-num-0.1,0.1-error,unphys-num-0.3,0.3-error,
+        ' ${method}-${j}-ham.csv
+        sed -i '' '1i\
+        log(g),unphys-num-0.05,0.05-error,unphys-num-0.1,0.1-error,unphys-num-0.3,0.3-error,
+        ' ${method}-${j}-pot.csv
+
+      fi
       rm tmp*
       mv ${method}-* ${HOME_DIR}/stats
       cd ..
