@@ -19,3 +19,4 @@ paste -d '' tmp0_k.csv tmp1_k.csv tmp2_k.csv tmp3_k.csv tmp4_k.csv tmp5_k.csv tm
 paste -d '' tmp0_p.csv tmp1_p.csv tmp2_p.csv tmp3_p.csv tmp4_p.csv tmp5_p.csv tmp6_p.csv tmp7_p.csv >p.csv
 paste -d '' tmp0_t.csv tmp1_t.csv tmp2_t.csv tmp3_t.csv tmp4_t.csv tmp5_t.csv tmp6_t.csv tmp7_t.csv >t.csv
 rm tmp*
+ls *.csv | xargs sed -i '1i dt,middle,middle-error,end,end-error,beginning,beginning-error,side,side-error,PV-middle,PV-middle-error,PV-end,PV-end-error,PV-beginning,PV-beginning-error,PV-side,PV-side-error,dt,exact'
